@@ -35,6 +35,14 @@ import pyconnectors.connectors.social.slack  # noqa
 import pyconnectors.connectors.social.tiktok  # noqa
 import pyconnectors.connectors.social.twitter  # noqa
 import pyconnectors.connectors.social.whatsapp  # noqa
+import pyconnectors.connectors.storage.adls  # noqa
+import pyconnectors.connectors.storage.azure_blob  # noqa
+import pyconnectors.connectors.storage.cloudinary  # noqa
+import pyconnectors.connectors.storage.digitalocean  # noqa
+import pyconnectors.connectors.storage.gcs  # noqa
+import pyconnectors.connectors.storage.hetzner  # noqa
+import pyconnectors.connectors.storage.minio  # noqa
+import pyconnectors.connectors.storage.ovh  # noqa
 import pyconnectors.connectors.storage.s3  # noqa
 
 

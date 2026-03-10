@@ -20,6 +20,10 @@ mysql = ["pymysql"]
 mongodb = ["pymongo"]
 redis = ["redis"]
 s3 = ["boto3"]
+gcs = ["google-cloud-storage"]
+azure_blob = ["azure-storage-blob"]
+adls = ["azure-storage-file-datalake"]
+cloudinary = ["cloudinary"]
 cli = ["typer", "rich"]
 dev = [
     "pytest",
@@ -55,7 +59,12 @@ module = [
     "psycopg",
     "boto3",
     "fastapi",
-    "django"
+    "django",
+    "google.cloud",
+    "azure.storage.blob",
+    "azure.storage.filedatalake",
+    "cloudinary",
+    "cloudinary.uploader"
 ]
 ignore_missing_imports = true
 
