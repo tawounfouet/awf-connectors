@@ -9,6 +9,7 @@ from pyconnectors.connectors.social.linkedin import LinkedInConnector
 from pyconnectors.connectors.social.slack import SlackConnector
 from pyconnectors.connectors.social.tiktok import TikTokConnector
 from pyconnectors.connectors.social.twitter import TwitterConnector
+from pyconnectors.connectors.social.whatsapp import WhatsAppConnector
 
 
 @pytest.fixture
@@ -151,3 +152,29 @@ def test_instagram_connector_execute(mock_urlopen):
 
     req = mock_urlopen.call_args[0][0]
     assert req.full_url == "https://graph.instagram.com/v19.0/me/media?access_token=ig_token"
+
+
+@patch("urllib.request.urlopen")
+def test_whatsapp_connector_execute(mock_urlopen):
+    config = ConnectorConfig(params={"access_token": "wa_token", "phone_number_id": "12345"})
+    connector = WhatsAppConnector(config)
+
+    mock_response = MagicMock()
+    mock_response.status = 200
+    mock_response.read.return_value = b'{"messages": [{"id": "msg1"}]}'
+    mock_context = MagicMock()
+    mock_context.__enter__.return_value = mock_response
+    mock_urlopen.return_value = mock_context
+
+    result = connector.execute("15551234567", "Hello World")
+
+    assert result["status"] == 200
+    assert result["data"] == {"messages": [{"id": "msg1"}]}
+
+    req = mock_urlopen.call_args[0][0]
+    assert req.full_url == "https://graph.facebook.com/v19.0/12345/messages"
+    assert req.get_header("Authorization") == "Bearer wa_token"
+
+    payload = json.loads(req.data.decode("utf-8"))
+    assert payload["to"] == "15551234567"
+    assert payload["text"]["body"] == "Hello World"
