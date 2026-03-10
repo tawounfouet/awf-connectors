@@ -11,7 +11,9 @@ except ImportError:
     Depends = None
 
 
-def get_connector_dependency(name: str, config_dict: dict[str, Any] | None = None) -> Callable[[], Any]:
+def get_connector_dependency(
+    name: str, config_dict: dict[str, Any] | None = None
+) -> Callable[[], Any]:
     """
     Returns a FastAPI dependency that yields a configured connector.
     """

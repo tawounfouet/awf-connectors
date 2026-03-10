@@ -3,11 +3,11 @@ from typing import Any
 from pyconnectors.base import BaseConnector
 from pyconnectors.config import ConnectorConfig
 from pyconnectors.factory import ConnectorFactory
-from pyconnectors.registry import connector
 from pyconnectors.exceptions import ConnectorConfigurationError
 
 
 from pyconnectors.registry import ConnectorRegistry
+
 
 class FactoryTestConnector(BaseConnector):
     def execute(self) -> Any:

@@ -12,7 +12,9 @@ except ImportError:
 class S3Connector(BaseConnector):
     """AWS S3 Storage Connector using boto3."""
 
-    def execute(self, action: str, bucket: str, key: str, data: bytes | None = None) -> dict[str, Any]:
+    def execute(
+        self, action: str, bucket: str, key: str, data: bytes | None = None
+    ) -> dict[str, Any]:
         if boto3 is None:
             raise ImportError(
                 "S3 connector requires boto3. Install with: pip install pyconnectors[s3]"

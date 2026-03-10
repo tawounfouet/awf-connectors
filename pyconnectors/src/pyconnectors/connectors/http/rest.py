@@ -13,7 +13,13 @@ except ImportError:
 class RestConnector(BaseConnector):
     """Minimal REST API Connector using stdlib urllib."""
 
-    def execute(self, method: str, url: str, data: dict[str, Any] | None = None, headers: dict[str, Any] | None = None) -> dict[str, Any]:
+    def execute(
+        self,
+        method: str,
+        url: str,
+        data: dict[str, Any] | None = None,
+        headers: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         req_headers = headers or {}
         if "Content-Type" not in req_headers:
             req_headers["Content-Type"] = "application/json"

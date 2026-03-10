@@ -13,7 +13,12 @@ console = Console()
 import pyconnectors.connectors.database.postgresql  # noqa
 import pyconnectors.connectors.email.smtp  # noqa
 import pyconnectors.connectors.http.rest  # noqa
+import pyconnectors.connectors.social.facebook  # noqa
+import pyconnectors.connectors.social.instagram  # noqa
+import pyconnectors.connectors.social.linkedin  # noqa
 import pyconnectors.connectors.social.slack  # noqa
+import pyconnectors.connectors.social.tiktok  # noqa
+import pyconnectors.connectors.social.twitter  # noqa
 import pyconnectors.connectors.storage.s3  # noqa
 
 
