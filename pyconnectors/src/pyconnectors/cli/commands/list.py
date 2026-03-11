@@ -10,6 +10,10 @@ console = Console()
 # We need to import the connectors so they are registered
 # In a real app we might load them dynamically or have an entry point based plugin system
 # For now, let's just make sure the subpackages are imported
+import pyconnectors.connectors.auth.jwt_auth  # noqa
+import pyconnectors.connectors.auth.oauth2  # noqa
+import pyconnectors.connectors.auth.oidc  # noqa
+import pyconnectors.connectors.auth.saml  # noqa
 import pyconnectors.connectors.database.mongodb  # noqa
 import pyconnectors.connectors.database.mysql  # noqa
 import pyconnectors.connectors.database.postgresql  # noqa
@@ -27,6 +31,7 @@ import pyconnectors.connectors.email.resend  # noqa
 import pyconnectors.connectors.email.ses  # noqa
 import pyconnectors.connectors.email.smtp  # noqa
 import pyconnectors.connectors.email.yahoo  # noqa
+import pyconnectors.connectors.http.oauth2  # noqa
 import pyconnectors.connectors.http.rest  # noqa
 import pyconnectors.connectors.social.facebook  # noqa
 import pyconnectors.connectors.social.instagram  # noqa

@@ -24,6 +24,7 @@ gcs = ["google-cloud-storage"]
 azure_blob = ["azure-storage-blob"]
 adls = ["azure-storage-file-datalake"]
 cloudinary = ["cloudinary"]
+auth = ["PyJWT", "python3-saml"]
 cli = ["typer", "rich"]
 dev = [
     "pytest",
@@ -64,7 +65,9 @@ module = [
     "azure.storage.blob",
     "azure.storage.filedatalake",
     "cloudinary",
-    "cloudinary.uploader"
+    "cloudinary.uploader",
+    "jwt",
+    "onelogin.saml2.auth"
 ]
 ignore_missing_imports = true
 
