@@ -31,9 +31,12 @@ import pyconnectors.connectors.email.resend  # noqa
 import pyconnectors.connectors.email.ses  # noqa
 import pyconnectors.connectors.email.smtp  # noqa
 import pyconnectors.connectors.email.yahoo  # noqa
+import pyconnectors.connectors.fitness.strava  # noqa
 import pyconnectors.connectors.http.oauth2  # noqa
 import pyconnectors.connectors.http.rest  # noqa
 import pyconnectors.connectors.social.facebook  # noqa
+import pyconnectors.connectors.payment.paypal  # noqa
+import pyconnectors.connectors.payment.stripe_api  # noqa
 import pyconnectors.connectors.social.instagram  # noqa
 import pyconnectors.connectors.social.linkedin  # noqa
 import pyconnectors.connectors.social.slack  # noqa
