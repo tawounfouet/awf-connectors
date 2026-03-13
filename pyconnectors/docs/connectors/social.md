@@ -49,6 +49,24 @@ Social connectors interact with major social network APIs using 0-dependency nat
   ig.execute("me/media")
   ```
 
+### Discord Webhooks (`social.discord`)
+- **Requires:** Nothing (uses stdlib)
+- **Config:** `webhook_url`
+- **Usage:**
+  ```python
+  discord = ConnectorFactory.create("social.discord", config)
+  discord.execute("Hello from PyConnectors!", username="Bot")
+  ```
+
+### Microsoft Teams Webhooks (`social.teams`)
+- **Requires:** Nothing (uses stdlib)
+- **Config:** `webhook_url`
+- **Usage:**
+  ```python
+  teams = ConnectorFactory.create("social.teams", config)
+  teams.execute("Pipeline failed.", title="Alert", theme_color="FF0000")
+  ```
+
 ### Slack Webhooks (`social.slack`)
 - **Requires:** Nothing (uses stdlib)
 - **Config:** `webhook_url`

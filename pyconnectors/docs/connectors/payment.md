@@ -43,6 +43,33 @@ session = stripe_conn.execute(
 )
 ```
 
+## HelloAsso (`payment.helloasso`)
+
+Interacts with the HelloAsso API v5 to query organizations, campaigns, and payments using Client Credentials natively.
+
+**Requires:** None (uses stdlib `urllib`)
+
+### Configuration
+- `client_id`: The Client ID assigned to your organization.
+- `client_secret`: The Client Secret.
+
+### Usage
+
+```python
+config = ConnectorConfig(params={
+    "client_id": "CLIENT_ID",
+    "client_secret": "CLIENT_SECRET"
+})
+helloasso = ConnectorFactory.create("payment.helloasso", config=config)
+
+# Fetch campaigns for an organization
+result = helloasso.execute("organizations/my-org/campaigns", method="GET")
+
+if result["status"] == 200:
+    for campaign in result["data"].get("data", []):
+        print(f"Campaign: {campaign['name']}")
+```
+
 ## PayPal (`payment.paypal`)
 
 Interacts with the PayPal REST API using OAuth2 automatically.

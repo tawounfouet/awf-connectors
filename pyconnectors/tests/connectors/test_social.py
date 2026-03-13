@@ -3,10 +3,12 @@ import pytest
 from unittest.mock import MagicMock, patch
 
 from pyconnectors.config import ConnectorConfig
+from pyconnectors.connectors.social.discord import DiscordConnector
 from pyconnectors.connectors.social.facebook import FacebookConnector
 from pyconnectors.connectors.social.instagram import InstagramConnector
 from pyconnectors.connectors.social.linkedin import LinkedInConnector
 from pyconnectors.connectors.social.slack import SlackConnector
+from pyconnectors.connectors.social.teams import TeamsConnector
 from pyconnectors.connectors.social.tiktok import TikTokConnector
 from pyconnectors.connectors.social.twitter import TwitterConnector
 from pyconnectors.connectors.social.whatsapp import WhatsAppConnector
@@ -178,3 +180,55 @@ def test_whatsapp_connector_execute(mock_urlopen):
     payload = json.loads(req.data.decode("utf-8"))
     assert payload["to"] == "15551234567"
     assert payload["text"]["body"] == "Hello World"
+
+
+@patch("urllib.request.urlopen")
+def test_discord_connector_execute(mock_urlopen):
+    config = ConnectorConfig(params={"webhook_url": "https://discord.com/api/webhooks/123/abc"})
+    connector = DiscordConnector(config)
+
+    mock_response = MagicMock()
+    mock_response.status = 204
+    mock_context = MagicMock()
+    mock_context.__enter__.return_value = mock_response
+    mock_urlopen.return_value = mock_context
+
+    result = connector.execute("Alert!", username="Bot", embeds=[{"title": "Info"}])
+
+    assert result["status"] == 204
+
+    req = mock_urlopen.call_args[0][0]
+    assert req.full_url == "https://discord.com/api/webhooks/123/abc"
+    assert req.get_method() == "POST"
+
+    payload = json.loads(req.data.decode("utf-8"))
+    assert payload["content"] == "Alert!"
+    assert payload["username"] == "Bot"
+    assert payload["embeds"] == [{"title": "Info"}]
+
+
+@patch("urllib.request.urlopen")
+def test_teams_connector_execute(mock_urlopen):
+    config = ConnectorConfig(
+        params={"webhook_url": "https://company.webhook.office.com/webhookb2/..."}
+    )
+    connector = TeamsConnector(config)
+
+    mock_response = MagicMock()
+    mock_response.status = 200
+    mock_context = MagicMock()
+    mock_context.__enter__.return_value = mock_response
+    mock_urlopen.return_value = mock_context
+
+    result = connector.execute("Pipeline failed.", title="Alert", theme_color="FF0000")
+
+    assert result["status"] == 200
+
+    req = mock_urlopen.call_args[0][0]
+    assert req.full_url == "https://company.webhook.office.com/webhookb2/..."
+    assert req.get_method() == "POST"
+
+    payload = json.loads(req.data.decode("utf-8"))
+    assert payload["text"] == "Pipeline failed."
+    assert payload["title"] == "Alert"
+    assert payload["themeColor"] == "FF0000"

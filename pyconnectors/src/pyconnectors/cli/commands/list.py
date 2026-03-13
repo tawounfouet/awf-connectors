@@ -14,6 +14,7 @@ import pyconnectors.connectors.auth.jwt_auth  # noqa
 import pyconnectors.connectors.auth.oauth2  # noqa
 import pyconnectors.connectors.auth.oidc  # noqa
 import pyconnectors.connectors.auth.saml  # noqa
+import pyconnectors.connectors.crm.hubspot  # noqa
 import pyconnectors.connectors.database.mongodb  # noqa
 import pyconnectors.connectors.database.mysql  # noqa
 import pyconnectors.connectors.database.postgresql  # noqa
@@ -31,15 +32,19 @@ import pyconnectors.connectors.email.resend  # noqa
 import pyconnectors.connectors.email.ses  # noqa
 import pyconnectors.connectors.email.smtp  # noqa
 import pyconnectors.connectors.email.yahoo  # noqa
+import pyconnectors.connectors.events.eventbrite  # noqa
 import pyconnectors.connectors.fitness.strava  # noqa
 import pyconnectors.connectors.http.oauth2  # noqa
 import pyconnectors.connectors.http.rest  # noqa
+import pyconnectors.connectors.social.discord  # noqa
 import pyconnectors.connectors.social.facebook  # noqa
+import pyconnectors.connectors.payment.helloasso  # noqa
 import pyconnectors.connectors.payment.paypal  # noqa
 import pyconnectors.connectors.payment.stripe_api  # noqa
 import pyconnectors.connectors.social.instagram  # noqa
 import pyconnectors.connectors.social.linkedin  # noqa
 import pyconnectors.connectors.social.slack  # noqa
+import pyconnectors.connectors.social.teams  # noqa
 import pyconnectors.connectors.social.tiktok  # noqa
 import pyconnectors.connectors.social.twitter  # noqa
 import pyconnectors.connectors.social.whatsapp  # noqa
